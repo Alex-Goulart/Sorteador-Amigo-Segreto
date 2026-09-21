@@ -11,9 +11,30 @@ function adicionar(){
     // Adiciona o nome ao array
     nomeAmigos.push(adicionarNome); 
     // Atualiza a lista de amigos na tela
-    document.getElementById('lista-amigos').textContent = nomeAmigos.join(', '); 
+    mostrarLista(); 
     // Limpa o campo depois de adicionar
     document.getElementById('nome-amigo').value = '';
+}
+
+// Mostrar lista de amigos
+function mostrarLista(){
+    let lista = document.getElementById('lista-amigos');
+    lista.innerHTML = '';
+    for (let i = 0 ; i < nomeAmigos.length; i++){
+        let nome = document.createElement('span');
+        nome.textContent = nomeAmigos[i] + ', ';
+        nome.onclick = function(){
+            removerAmigo(i);
+        };
+        
+        lista.appendChild(nome);
+    }
+}
+// Função Remover amigo
+function removerAmigo(indice){
+    nomeAmigos.splice(indice, 1);
+    mostrarLista();
+
 }
 
 //Criando a Função Sortear Nomes

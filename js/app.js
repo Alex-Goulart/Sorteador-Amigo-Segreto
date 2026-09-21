@@ -23,15 +23,20 @@ function sortear(){
         alert('Para realizar o sorteio a quantidade de amigos tem que ser par!!');
         return
     }
-    let sorteio = Math.floor(Math.random() * nomeAmigos.length);
-    document.getElementById('lista-sorteio').textContent = nomeAmigos[sorteio];
+    // Embaralha os nomes
+    nomeAmigos.sort(()=> Math.random()-0.5);
+    let pares = " "; // Cria uma variável para guardar os pares
+    for (let i = 0; i < nomeAmigos.length; i +=2){
+        pares += nomeAmigos[i] + ' -> '  +nomeAmigos[i + 1] +'<br>'; // Percorre a lista de 2 em 2
+    }
+    // Mostra os pares na página
+    document.getElementById('lista-sorteio').innerHTML = pares;
 }
 
 // Criar funação para reiniciar o sorteio
 function reiniciar(){
     nomeAmigos = [];
-}
 
-document.getElementById('lista-amigos').textContent = '';
-document.getElementById('lista-sorteio').textContent = '';
-document.getElementById('nome-amigos').textContent = '';
+    document.getElementById('lista-amigos').innerHTML = '';
+    document.getElementById('lista-sorteio').innerHTML = '';
+}

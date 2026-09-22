@@ -8,6 +8,12 @@ function adicionar(){
         alert('Por favor, insira um nome antes de adicionar.');
         return; // Sai da função se o campo estiver vazio
     }
+
+    //Verificar se o nome esta repetido
+    if (nomeAmigos.includes(adicionarNome)){
+        alert('Esse nome já foi adicionado a lista!')
+        return
+    }
     // Adiciona o nome ao array
     nomeAmigos.push(adicionarNome); 
     // Atualiza a lista de amigos na tela
